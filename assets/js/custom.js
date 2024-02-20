@@ -56,3 +56,10 @@ $('.center').on('beforeChange', function(event, slick, currentSlide, nextSlide){
 $('.center').on('afterChange', function(event, slick, currentSlide){
   console.log('afterChange', currentSlide);
 });
+
+
+
+function toggleText() {
+  const header = document.querySelector('.header');
+  header.classList.toggle('light-text');
+}
