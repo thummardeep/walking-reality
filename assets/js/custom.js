@@ -1,18 +1,31 @@
 
-jQuery(window).on('scroll', function() {        
-    var st = jQuery(this).scrollTop();
-    jQuery('header').toggleClass('sticky_header', st > 300);
-    jQuery('.go-to-top').toggleClass('show', st > 100);
+window.addEventListener('scroll', function() {
+  var st = window.scrollY || window.pageYOffset;
+  var header = document.querySelector('header');
+  var goToTop = document.querySelector('.go-to-top');
+  
+  if (st > 300) {
+      header.classList.add('top');
+  } else {
+      header.classList.remove('top');
+  }
+  
+  if (st > 100) {
+      goToTop.classList.add('show');
+  } else {
+      goToTop.classList.remove('show');
+  }
 });
 
-jQuery('.go-to-top').on('click', function(e) {
-    e.preventDefault();
-    jQuery('html, body').animate({
-        scrollTop: 0
-    }, 300);
+document.querySelector('.go-to-top').addEventListener('click', function(e) {
+  e.preventDefault();
+  window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+  });
 });
 
-  // --------------------------- Responsive Menu ----------------------------
+  // --------------------------- navbar menu open ----------------------------
   jQuery('.nav-menu').on('click', function(){
           jQuery('html').addClass('showmenu');
   });
@@ -20,50 +33,125 @@ jQuery('.go-to-top').on('click', function(e) {
           jQuery('html').removeClass('showmenu');
   });
 
-  jQuery(document).ready(function($) {
-    // Function to handle accordion functionality
-    function accordion() {
-        $('footer .row ul').hide();
-        $("footer .footer-title").on("click", function() {
-            $("footer .row ul").slideUp('slow');
-            if ($(this).parent().hasClass("active")) {
-                $(this).parent().find('ul').slideUp('slow');
-                $('.footer-title').parent().removeClass('active');
-            } else {
-                $(this).parent().find('ul').slideDown('slow');
-                $('.footer-title').parent().removeClass('active');
-                $(this).parent().addClass('active');
-            }
-        });
-    }
+  // Function to handle accordion functionality
+function accordion() {
+  var footerTitles = document.querySelectorAll('footer .footer-title');
+  var footerRows = document.querySelectorAll('footer .row ul');
 
-    // Function to check window width and apply accordion accordingly
-    function checkWidth() {
-        var width = $(window).width();
-        if (width <= 767) {
-            accordion();
-        } else {
-            // Ensure that the accordion is deactivated if the window width is above 767 pixels
-            $('footer .row ul').show();
-            $("footer .footer-title").off("click");
-        }
-    }
+  footerRows.forEach(function(row) {
+      row.style.display = 'none';
+  });
 
-    // Initial check on page load
-    checkWidth();
+  footerTitles.forEach(function(title) {
+      title.addEventListener('click', function() {
+          var parent = this.parentElement;
+          var siblingUL = parent.querySelector('ul');
 
-    // Listen for window resize event
-    $(window).resize(function() {
-        checkWidth();
-    });
+          if (parent.classList.contains('active')) {
+              siblingUL.style.display = 'none';
+              parent.classList.remove('active');
+          } else {
+              siblingUL.style.display = 'block';
+              parent.classList.add('active');
+          }
+      });
+  });
+}
+
+// Function to check window width and apply accordion accordingly
+// Function to handle accordion functionality
+function accordion() {
+  var footerTitles = document.querySelectorAll('footer .footer-title');
+  var footerRows = document.querySelectorAll('footer .row ul');
+
+  footerRows.forEach(function(row) {
+      row.style.display = 'none';
+  });
+
+  footerTitles.forEach(function(title) {
+      title.addEventListener('click', function() {
+          var parent = this.parentElement;
+          var siblingUL = parent.querySelector('ul');
+
+          if (parent.classList.contains('active')) {
+              siblingUL.style.display = 'none';
+              parent.classList.remove('active');
+          } else {
+              siblingUL.style.display = 'block';
+              parent.classList.add('active');
+          }
+      });
+  });
+}
+
+
+
+
+// function checkWidth() {
+//   var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+
+//   if (width <= 767) {
+//       accordion();
+//   } else {
+     
+//       var footerRows = document.querySelectorAll('footer .row ul');
+
+//       footerRows.forEach(function(row) {
+//           row.style.display = 'block';
+//       });
+
+//       var footerTitles = document.querySelectorAll('footer .footer-title');
+      
+//       footerTitles.forEach(function(title) {
+//           title.removeEventListener('click', function() {});
+//       });
+//   }
+// }
+
+
+// checkWidth();
+
+// window.addEventListener('resize', function() {
+//   checkWidth();
+// });
+
+jQuery(document).ready(function($) {
+  // Function to handle accordion functionality
+  function accordion() {
+      $('footer .row ul').hide();
+      $("footer .footer-title").on("click", function() {
+          $("footer .row ul").slideUp('slow');
+          if ($(this).parent().hasClass("active")) {
+              $(this).parent().find('ul').slideUp('slow');
+              $('.footer-title').parent().removeClass('active');
+          } else {
+              $(this).parent().find('ul').slideDown('slow');
+              $('.footer-title').parent().removeClass('active');
+              $(this).parent().addClass('active');
+          }
+      });
+  }
+
+  // Function to check window width and apply accordion accordingly
+  function checkWidth() {
+      var width = $(window).width();
+      if (width <= 767) {
+          accordion();
+      } else {
+          // Ensure that the accordion is deactivated if the window width is above 767 pixels
+          $('footer .row ul').show();
+          $("footer .footer-title").off("click");
+      }
+  }
+
+   // Initial check on page load
+   checkWidth();
+
+   // Listen for window resize event
+   $(window).resize(function() {
+       checkWidth();
+   });
 });
-
-
-  // --------------------------- Responsive Menu ----------------------------
- 
-
-
-
 
 // $('.center').slick({
 //   centerMode: true,
@@ -93,7 +181,7 @@ jQuery('.go-to-top').on('click', function(e) {
 //   $('.text-container').text(textContents[currentSlideIndex]);
 // });
 
-
+// first slider code
 $('.center').slick({
   centerMode: true,
   infinite: true,
@@ -117,7 +205,7 @@ $('.center').on('afterChange', function(event, slick, currentSlide){
 });
 
 
-
+// second slick slider
 
 $('.center-2').slick({
   
@@ -143,8 +231,3 @@ $('.center-2').on('afterChange', function(event, slick, currentSlide){
 
 
 
-
-function toggleText() {
-  const header = document.querySelector('.header');
-  header.classList.toggle('light-text');
-}
