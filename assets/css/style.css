@@ -351,7 +351,7 @@ header .right-btn-wrap .main-btn.border-btn:hover {
 }
 
 header .right-btn-wrap .main-btn.border-btn.white-border {
-    border-color: #FFFFFF;
+    border-color: #FFF;
 
 }
 
@@ -809,6 +809,7 @@ header.top.detailpage-header {
     max-width: 1050px;
     width: 100%;
     color: var(--pure-white);
+    z-index: 10;
 
 }
 
@@ -848,6 +849,8 @@ header.top.detailpage-header {
     border: none;
     max-width: 660px;
     width: 100%;
+    outline: none;
+    z-index: 10;
     background: transparent;
     padding-bottom: 10px;
     position: relative;
@@ -861,15 +864,23 @@ header.top.detailpage-header {
     font-weight: 400;
     line-height: normal;
 }
+.wr-home-banner .wr-bottom-content .bottom-options .enter-city input textarea:focus, input:focus {
+    color: #FFF;
+}
 
 .wr-home-banner .wr-bottom-content .bottom-options .enter-city button {
     position: absolute;
     left: 98%;
     background: transparent;
     top: 50%;
+    z-index: 10;
     transform: translate(-50%, -50%);
     border: none;
+    cursor: pointer;
 
+}
+.wr-home-banner .wr-bottom-content .bottom-options .enter-city button img{
+    cursor: pointer;
 }
 
 .wr-home-banner .wr-bottom-content .bottom-options .enter-city .bottom-line {
@@ -879,7 +890,7 @@ header.top.detailpage-header {
     background-color: var(--Pure-White);
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 769px) {
     .wr-home-banner {
         height: 600px;
     }
@@ -2043,33 +2054,16 @@ header.top.detailpage-header {
 
 }
 
-.wr-form .f-contant .c-form form .t-input.user-input::before {
-    background-image: url(../images/icons/User.png);
-}
 
-.wr-form .f-contant .c-form form .t-input::before,
-.wr-form .f-contant .c-form form .t-input.user_input::before {
-    content: "";
+
+
+
+.wr-form .f-contant .c-form form .title .user-input .img{
     position: absolute;
-    left: 0;
-    top: 4px;
-    width: 20px;
-    height: 20px;
-    background: url(../images/icons/User.png) no-repeat;
-    background-size: 20px;
+    top: -2px;
+    left: 0px;
 }
 
-.wr-form .f-contant .c-form form .t-input.call_input::before {
-    background-image: url(../images/icons/Call.png);
-}
-
-.wr-form .f-contant .c-form form .t-input.message-input::before {
-    background-image: url(../images/icons/Message.png);
-}
-
-.wr-form .f-contant .c-form form .t-input.email_input::before {
-    background-image: url(../images/icons/Email.png);
-}
 
 .wr-form .f-contant .c-form form .btn_wrap .main_btn {
     display: table;
@@ -2105,6 +2099,7 @@ header.top.detailpage-header {
 .wr-form .f-contant .c-form form .three-btn .radio-btn {
 
     max-width: 120px;
+    min-width: 120px;
     width: 100%;
     height: 40px;
     border: 3px solid transparent;
@@ -2146,7 +2141,10 @@ header.top.detailpage-header {
 
     line-height: normal;
 }
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 769px) {
+    .wr-form{
+        padding: 50px 0 50px;
+    }
     .wr-form .f-contant .c-form form .btn_wrap .main_btn {
         min-width: 162px;
     }
@@ -2166,16 +2164,27 @@ header.top.detailpage-header {
 }
 
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 769px) {
     .wr-form .f-contant .c-form form .three-btn {
         gap: 10px;
+        flex-wrap: wrap;
     }
 
     .wr-form .f-contant .c-form form .three-btn .radio-btn .hobbies-icon p {
         font-size: 14px;
     }
 }
+@media only screen and (max-width: 560px) {
+    .wr-form .f-contant .c-form form .three-btn{
+        flex-wrap: wrap;
 
+    }
+.wr-form .f-contant .c-form form .three-btn .radio-btn {
+min-width: 80px !important;
+height: 39px;
+
+}
+}
 /* form section */
 
 
@@ -2290,7 +2299,10 @@ footer ul li a {
 }
 
 @media only screen and (max-width: 767px) {
-
+footer{
+    padding: 40px 0 0;
+}
+    
     footer .footer-title {
         border-bottom: 1px solid #202020;
         padding-bottom: 10px;
@@ -2366,7 +2378,11 @@ footer .copy-right-wrap p {
 
     margin-top: 60px;
 }
-
+@media only screen and (max-width: 769px) {
+footer .copy-right-wrap p{
+margin-top: 40px;
+}
+}
 /* footer */
 
 
@@ -2863,7 +2879,63 @@ footer .copy-right-wrap p {
     line-height: 35px;
     /* 194.444% */
 }
+@media only screen and (max-width: 769px) {
+.wr-commercial-banner {
+    height: auto;
+}
 
+.wr-commercial-banner .wr-commercial-center-content {
+    padding: 0px 20px;
+}
+.wr-com {
+    padding: 50px 0 50px;
+}
+.wr-commercial {
+    padding: 60px 0 60px;
+}
+
+.wr-commercial .row {
+    margin-top: 50px;
+    margin-bottom: 0px;
+    grid-template-columns: auto;
+}
+.wr-commercial .row .text{
+    padding-top: 20px;
+}
+.wr-commercial .row:nth-child(3) {
+    .img,
+    .text {
+        order: unset;
+        /* Reset the order */
+    }
+
+    .img {
+        order: -1;
+        /* Move image before text */
+    }
+
+}
+.wr-options {
+    padding: 50px 0 50px;
+}
+
+.wr-options .four-op {
+    grid-template-columns: auto;
+    margin-top: 40px;
+    gap: 30px;
+}
+.wr-group {
+    padding: 50px 0 50px;
+}
+
+.wr-group .content {
+    padding-top: 0px;
+}
+
+.wr-group .content p {
+    line-height: 29px;
+}
+}
 
 @media only screen and (max-width: 560px) {
     .wr-commercial-banner {
@@ -3074,7 +3146,10 @@ footer .copy-right-wrap p {
 
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 769px) {
+    .wr-developers-banner {
+        height: auto;
+    }
     .wr-dev-ops .row {
         grid-template-columns: auto;
     }
@@ -3355,10 +3430,11 @@ footer .copy-right-wrap p {
     }
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 769px) {
     .wr-events-banner {
-        height: 550px;
+        height: auto;
     }
+   
 
     .c-event-content .events-container {
         grid-template-columns: auto;
@@ -4091,15 +4167,22 @@ text-align: left;
 .takes-pride .frame iframe{
     max-width: 840px;
     width: 100%;
-    min-height: 473px;
+    min-height: 250px;
     height: 100%;
 }
 
 @media only screen and (max-width: 769px){
     .la-colambo{
-        padding: 40px 0 50px;
+        padding: 40px 0 40px;
     }
     .takes-pride .pride{
         grid-template-columns: auto;
+        padding-bottom: 40px;
+    }
+    .takes-pride{
+        padding: 0 0 20px;
+    }
+    .la-colambo .gray{
+        padding-top: 20px;
     }
 }
